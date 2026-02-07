@@ -1,0 +1,40 @@
+{
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "module": "commonjs",
+    "target": "ES2021",
+
+    "declaration": true,
+    "removeComments": true,
+    "sourceMap": true,
+    "outDir": "./dist",
+
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    },
+
+    "incremental": true,
+    "skipLibCheck": true,
+
+    "strictNullChecks": true,
+    "forceConsistentCasingInFileNames": true,
+
+    "noImplicitAny": false,
+    "strictBindCallApply": false,
+    "noFallthroughCasesInSwitch": false
+  },
+
+  "ts-node": {
+    "require": ["tsconfig-paths/register"]
+  },
+
+  "include": ["src/**/*.ts", "initialScript/**/*.ts", "emails/**/*.ts", "emails/**/*.tsx", "src/shared/services/email.service.tsx"],
+  "exclude": ["node_modules", "dist"]
+}
