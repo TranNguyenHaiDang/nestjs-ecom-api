@@ -12,9 +12,18 @@ export class SharedUserRepository {
   //   })
   // }
   async findUnique(uniqueObject: { email: string } | { id: number }): Promise<UserType | null> {
-    // Đảm bảo object clean, không có undefined fields
-    const where = 'email' in uniqueObject ? { email: uniqueObject.email } : { id: uniqueObject.id }
+    if ('email' in uniqueObject && uniqueObject.email !== undefined) {
+      return this.prismaService.user.findUnique({
+        where: { email: uniqueObject.email },
+      })
+    }
 
-    return this.prismaService.user.findUnique({ where })
+    if ('id' in uniqueObject && uniqueObject.id !== undefined) {
+      return this.prismaService.user.findUnique({
+        where: { id: uniqueObject.id },
+      })
+    }
+
+    throw new Error('Invalid unique object provided')
   }
 }
